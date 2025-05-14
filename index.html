@@ -350,7 +350,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       
       .contact-info {
         text-align: center;
-        margin: 0 15px 90px; /* 增加底部間距，為浮動按鈕留出空間 */
+        margin: 0 15px 140px; /* 增加底部間距，為浮動按鈕留出空間 */
         font-size: 1.1rem;
         color: #ffffff;
         background: rgba(10, 10, 40, 0.7);
@@ -435,10 +435,10 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         margin: 20px auto;
       }
       
-      /* ==================== 新增加強版浮動按鈕樣式 ==================== */
+      /* ==================== 原有浮動按鈕樣式 (保留但隱藏以維持兼容性) ==================== */
       .fixed-buttons {
         position: fixed;
-        bottom: 50px;
+        bottom: 120px; /* 往上移動 */
         left: 0;
         right: 0;
         display: flex;
@@ -447,10 +447,8 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         z-index: 1000;
         padding: 0 15px;
         transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-      
-      .fixed-buttons:hover {
-        transform: scale(1.02);
+        opacity: 0;
+        pointer-events: none; /* 禁用原始按鈕的點擊 */
       }
       
       .fixed-btn {
@@ -608,6 +606,39 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         }
       }
       
+      /* 添加簡化版抖音友好按鈕 */
+      .tiktok-buttons {
+        position: fixed;
+        bottom: 80px; /* 調整位置 */
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        z-index: 2000;
+        padding: 0 15px;
+      }
+      
+      .tiktok-btn {
+        flex: 1;
+        max-width: 180px;
+        background: linear-gradient(45deg, #4c00ff, #8c52ff);
+        color: #fff;
+        font-weight: 700;
+        font-size: 1.1rem;
+        padding: 16px 10px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 5px 20px rgba(76, 0, 255, 0.4);
+        border: none;
+        letter-spacing: 1px;
+        display: block;
+      }
+      
+      .tiktok-btn-blue {
+        background: linear-gradient(45deg, #1e54e8, #45a7ff);
+      }
+      
       /* 响应式設計強化 */
       @media (max-width: 768px) {
         .hero-title {
@@ -645,19 +676,19 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           padding: 15px;
         }
         
-        .fixed-buttons {
-          bottom: 15px;
+        .tiktok-buttons {
+          bottom: 60px;
           gap: 10px;
         }
         
-        .fixed-btn {
+        .tiktok-btn {
           max-width: 150px;
           font-size: 0.95rem;
-          padding: 14px 15px;
+          padding: 14px 10px;
         }
         
         .contact-info {
-          margin-bottom: 80px;
+          margin-bottom: 120px;
           padding: 15px;
           font-size: 1rem;
         }
@@ -677,14 +708,10 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           font-size: 0.9rem;
         }
         
-        .fixed-btn {
+        .tiktok-btn {
           max-width: 130px;
           font-size: 0.9rem;
-          padding: 12px 12px;
-        }
-        
-        .btn-icon {
-          margin-left: 5px;
+          padding: 12px 8px;
         }
         
         .section-title {
@@ -700,7 +727,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         }
         
         .contact-info {
-          margin-bottom: 75px;
+          margin-bottom: 110px;
           font-size: 0.9rem;
         }
         
@@ -711,19 +738,20 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       
       /* 超小屏幕適配 */
       @media (max-width: 360px) {
-        .fixed-buttons {
+        .tiktok-buttons {
           flex-direction: column;
           align-items: center;
           gap: 8px;
+          bottom: 50px;
         }
         
-        .fixed-btn {
+        .tiktok-btn {
           max-width: 200px;
           width: 100%;
         }
         
         .contact-info {
-          margin-bottom: 120px;
+          margin-bottom: 160px;
         }
       }
 
@@ -917,13 +945,12 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         <span class="contact-highlight">領取您的專屬優惠！</span>
       </div>
       
-      <!-- 優化科技感浮動按鈕 -->
+      <!-- 原浮動按鈕（保留但隱藏） -->
       <div class="fixed-buttons">
         <a href="https://97y.me/o0xQk" class="fixed-btn">
           立即註冊
           <div class="shine"></div>
           <div class="dots">
-            <!-- 裝飾小點由JS生成 -->
           </div>
           <span class="btn-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -935,13 +962,22 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           聯繫子涵
           <div class="shine"></div>
           <div class="dots">
-            <!-- 裝飾小點由JS生成 -->
           </div>
           <span class="btn-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
             </svg>
           </span>
+        </a>
+      </div>
+      
+      <!-- 新增對抖音友好的按鈕 -->
+      <div class="tiktok-buttons">
+        <a href="https://97y.me/o0xQk" class="tiktok-btn" tiktok-action="click" tiktok-type="register" id="register-btn">
+          立即註冊 →
+        </a>
+        <a href="https://t.me/hong_2537" class="tiktok-btn tiktok-btn-blue" tiktok-action="click" tiktok-type="contact" id="contact-btn">
+          聯繫子涵 →
         </a>
       </div>
 
@@ -995,7 +1031,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         });
         
         // 添加按鈕點擊波紋效果
-        const buttons = document.querySelectorAll('.fixed-btn');
+        const buttons = document.querySelectorAll('.fixed-btn, .tiktok-btn');
         
         buttons.forEach(button => {
           button.addEventListener('click', function(e) {
@@ -1014,6 +1050,32 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
             }, 600);
           });
         });
+
+        // 添加抖音事件追蹤
+        const registerBtn = document.getElementById('register-btn');
+        const contactBtn = document.getElementById('contact-btn');
+
+        if (registerBtn) {
+          registerBtn.addEventListener('click', function() {
+            if (window.ttq) {
+              ttq.track('ClickButton', {
+                'button_name': '立即註冊',
+                'button_type': 'register'
+              });
+            }
+          });
+        }
+
+        if (contactBtn) {
+          contactBtn.addEventListener('click', function() {
+            if (window.ttq) {
+              ttq.track('ClickButton', {
+                'button_name': '聯繫子涵',
+                'button_type': 'contact'
+              });
+            }
+          });
+        }
       });
     </script>
   </body>
